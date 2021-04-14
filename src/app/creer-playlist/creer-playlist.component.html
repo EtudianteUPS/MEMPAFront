@@ -1,0 +1,21 @@
+<h2 class="mt-3 mb-3">Créer une playlist</h2>
+<p class="mt-5 mb-5 ml-2 mr-2 text-center">Commence par saisir le nom et le style de la playlist, ensuite tu pourras ajouter tes titres favoris !</p>
+<div class="form-group row">
+    <div class="col-12 col-lg-5">
+      <label for="nomPlaylist" class="form-label">Nom de la playlist</label>
+      <input type="text" class="form-control" id="nomPlaylist" [(ngModel)]="playlist.nomPlaylist" required>
+    </div>
+    <div class="col-12 col-lg-5">
+      <label for="style" class="form-label">Style</label>
+      <input type="text" class="form-control" id="style" [(ngModel)]="playlist.style" required>
+    </div>
+
+    <div class="col-12 col-lg-2 mt-4 pt-2">
+      <button class="btn btn-info w-100">Créer</button>
+    </div>
+</div>
+Test :
+<pre>{{playlist | json}}</pre>
+
+
+

@@ -1,0 +1,14 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Raleway&family=Righteous&display=swap');
+
+* {
+  font-family: 'Montserrat', 'Raleway', cursive;
+}
+
+h1, h2 {
+  font-family: 'Righteous', cursive;
+}
+
+li a {
+  color : white;
+}

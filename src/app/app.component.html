@@ -1,0 +1,11 @@
+<div class="row text-secondary">
+  <div class="col-3 bg-light h-100">
+    <button class="col-12 btn btn-secondary mt-2 mb-2" routerLink="lister" routerLinkActive="isActive">Accueil</button>
+    <button class="col-12 btn btn-secondary mb-2" routerLink="creer" routerLinkActive="isActive">Créer</button>
+    <button class="col-12 btn btn-secondary mb-2" disabled>Rechercher</button>
+    <button class="col-12 btn btn-secondary mb-2" disabled >Trier</button>
+  </div>
+  <div class="col-8 bg-light offset-1 px-4">
+    <router-outlet></router-outlet>
+  </div>
+</div>
