@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {Playlist} from '../Playlist';
+import {Playlist} from '../_model/Playlist';
 // import {Utilisateur} from '../Utilisateur';
 // import {Musique} from '../Musique';
-import {ApiMempaBrokerService} from '../api-mempa-broker.service';
+import {ApiMempaBrokerService} from '../_broker/api-mempa-broker.service';
 
 @Component({
   selector: 'app-lister-playlist',

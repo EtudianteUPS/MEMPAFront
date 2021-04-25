@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 // import {Utilisateur} from '../Utilisateur';
 // import {Musique} from '../Musique';
-import {Playlist} from '../Playlist';
-import {ApiMempaBrokerService} from '../api-mempa-broker.service';
+import {Playlist} from '../_model/Playlist';
+import {ApiMempaBrokerService} from '../_broker/api-mempa-broker.service';
 import {HttpClient} from '@angular/common/http';
 import {ActivatedRoute, Router} from '@angular/router';
 

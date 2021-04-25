@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Playlist} from '../Playlist';
-import {ApiMempaBrokerService} from '../api-mempa-broker.service';
-import {HttpClient} from '@angular/common/http';
+import {Playlist} from '../_model/Playlist';
+import {ApiMempaBrokerService} from '../_broker/api-mempa-broker.service';
+// import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
 
 @Component({
@@ -11,7 +11,7 @@ import {Router} from '@angular/router';
 })
 export class CreerPlaylistComponent implements OnInit {
   playlist: Playlist;
-  //pAjoutee: Playlist;
+  // pAjoutee: Playlist;
 
   constructor(private apiMempaBrokerService: ApiMempaBrokerService,
               private route: Router) { }

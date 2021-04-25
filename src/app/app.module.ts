@@ -1,6 +1,12 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {FormsModule} from '@angular/forms';
+import {RouterModule, Routes} from '@angular/router';
+import {HttpClientModule} from '@angular/common/http';
+
+import {ApiMempaBrokerService} from './_broker/api-mempa-broker.service';
+import {ApiUtilisateurBrokerService} from './_broker/api-utilisateur-broker.service';
 
 import { AppComponent } from './app.component';
 import { ListerPlaylistComponent } from './lister-playlist/lister-playlist.component';
@@ -8,12 +14,11 @@ import { DetailsPlaylistComponent } from './details-playlist/details-playlist.co
 import { CreerPlaylistComponent } from './creer-playlist/creer-playlist.component';
 import { AjouterMusiqueComponent } from './ajouter-musique/ajouter-musique.component';
 import { RechercherPlaylistComponent } from './rechercher-playlist/rechercher-playlist.component';
-import { AjouterUtilisateurComponent } from './ajouter-utilisateur/ajouter-utilisateur.component';
+import { InscriptionUtilisateurComponent } from './inscription-utilisateur/inscription-utilisateur.component';
+import { ConnexionUtilisateurComponent } from './connexion-utilisateur/connexion-utilisateur.component';
 
-import {FormsModule} from '@angular/forms';
-import {RouterModule, Routes} from '@angular/router';
-import {HttpClientModule} from '@angular/common/http';
-import {ApiMempaBrokerService} from './api-mempa-broker.service';
+
+
 
 const appRoutes: Routes = [
   { path: 'creer', component: CreerPlaylistComponent},
@@ -21,6 +26,8 @@ const appRoutes: Routes = [
   { path: 'lister', component: ListerPlaylistComponent},
   { path: 'rechercher', component: RechercherPlaylistComponent},
   { path: 'details/:id', component: DetailsPlaylistComponent}, // on indique que l'id sera donné à notre composant routage
+  { path: 'inscription', component: InscriptionUtilisateurComponent},
+  { path: 'connexion', component: ConnexionUtilisateurComponent},
   { path: '', component: ListerPlaylistComponent},
   { path: '**', component: ListerPlaylistComponent}
 ];
@@ -33,12 +40,13 @@ const appRoutes: Routes = [
     CreerPlaylistComponent,
     AjouterMusiqueComponent,
     RechercherPlaylistComponent,
-    AjouterUtilisateurComponent
+    ConnexionUtilisateurComponent,
+    InscriptionUtilisateurComponent
   ],
   imports: [
     BrowserModule, NgbModule, FormsModule, RouterModule.forRoot(appRoutes), HttpClientModule
   ],
-  providers: [ApiMempaBrokerService],
+  providers: [ApiMempaBrokerService, ApiUtilisateurBrokerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

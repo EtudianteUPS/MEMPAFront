@@ -3,8 +3,9 @@
  */
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Playlist} from './Playlist';
+import {Playlist} from '../_model/Playlist';
 import {Observable} from 'rxjs';
+import {Musique} from '../_model/Musique';
 
 @Injectable({
   providedIn: 'root'
@@ -44,5 +45,14 @@ export class ApiMempaBrokerService {
   // }
   public ajouterPlaylist(play: Playlist): Observable<Playlist> {
     return this.httpClient.post<Playlist>(this.url, play);
+  }
+
+
+  public ajouterMorceau(id: number, mus: Musique): void{
+    this.httpClient.put<Playlist>(this.url + '/' + id, mus)
+    .subscribe(
+        (response) => { console.log(response); },
+        (error) => { console.log('Erreur ajouter : ' + error); }
+    ); /*gère la promesse*/
   }
 }
