@@ -3,6 +3,7 @@ import {Playlist} from '../_model/Playlist';
 import {ApiMempaBrokerService} from '../_broker/api-mempa-broker.service';
 // import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
+import {ApiUtilisateurBrokerService} from '../_broker/api-utilisateur-broker.service';
 
 @Component({
   selector: 'app-creer-playlist',
@@ -14,6 +15,7 @@ export class CreerPlaylistComponent implements OnInit {
   // pAjoutee: Playlist;
 
   constructor(private apiMempaBrokerService: ApiMempaBrokerService,
+              private apiUtilisateurBrokerService: ApiUtilisateurBrokerService,
               private route: Router) { }
 
   ngOnInit(): void {
@@ -21,7 +23,7 @@ export class CreerPlaylistComponent implements OnInit {
   }
 
   creer(): void{
-    this.apiMempaBrokerService.ajouterPlaylist(this.playlist)
+    this.apiMempaBrokerService.ajouterPlaylist(this.playlist, this.apiUtilisateurBrokerService.currentUser)
       .subscribe((data) => {/*this.pAjoutee = data;*/ this.route.navigate(['/ajouter', data.id]);
       });
   }

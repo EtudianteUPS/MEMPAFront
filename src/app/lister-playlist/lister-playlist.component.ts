@@ -3,6 +3,8 @@ import {Playlist} from '../_model/Playlist';
 // import {Utilisateur} from '../Utilisateur';
 // import {Musique} from '../Musique';
 import {ApiMempaBrokerService} from '../_broker/api-mempa-broker.service';
+import {Utilisateur} from '../_model/Utilisateur';
+import {ApiUtilisateurBrokerService} from '../_broker/api-utilisateur-broker.service';
 
 @Component({
   selector: 'app-lister-playlist',
@@ -11,11 +13,15 @@ import {ApiMempaBrokerService} from '../_broker/api-mempa-broker.service';
 })
 export class ListerPlaylistComponent implements OnInit {
   lPlaylists: Playlist[] = [];
+  user: Utilisateur;
 
   /**
    * Constructeur qui récupère le service permettant de l'utiliser plus tard
    */
-  constructor(private apiMempaBrokerService: ApiMempaBrokerService) { }
+  constructor(private apiMempaBrokerService: ApiMempaBrokerService,
+              private apiUtilisateurBrokerService: ApiUtilisateurBrokerService) {
+    this.user = this.apiUtilisateurBrokerService.currentUser;
+  }
 
   ngOnInit(): void {
     this.apiMempaBrokerService.recupererListe().subscribe((data) => { this.lPlaylists = data; });

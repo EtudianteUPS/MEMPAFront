@@ -16,6 +16,7 @@ import { AjouterMusiqueComponent } from './ajouter-musique/ajouter-musique.compo
 import { RechercherPlaylistComponent } from './rechercher-playlist/rechercher-playlist.component';
 import { InscriptionUtilisateurComponent } from './inscription-utilisateur/inscription-utilisateur.component';
 import { ConnexionUtilisateurComponent } from './connexion-utilisateur/connexion-utilisateur.component';
+import {AuthGuard} from './_helpers/auth-guard';
 
 
 
@@ -25,11 +26,11 @@ const appRoutes: Routes = [
   { path: 'ajouter/:id', component: AjouterMusiqueComponent},
   { path: 'lister', component: ListerPlaylistComponent},
   { path: 'rechercher', component: RechercherPlaylistComponent},
-  { path: 'details/:id', component: DetailsPlaylistComponent}, // on indique que l'id sera donné à notre composant routage
+  { path: 'details/:id', component: DetailsPlaylistComponent},
   { path: 'inscription', component: InscriptionUtilisateurComponent},
   { path: 'connexion', component: ConnexionUtilisateurComponent},
-  { path: '', component: ListerPlaylistComponent},
-  { path: '**', component: ListerPlaylistComponent}
+  { path: '', component: ConnexionUtilisateurComponent},
+  { path: '**', component: ListerPlaylistComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({

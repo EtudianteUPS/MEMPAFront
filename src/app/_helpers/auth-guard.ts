@@ -12,14 +12,15 @@ export class AuthGuard implements CanActivate {
               private apiUtilisateurBrokerService: ApiUtilisateurBrokerService) {}
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    const user = this.apiUtilisateurBrokerService.userValue;
+    const user = this.apiUtilisateurBrokerService.currentUser;
+    console.log('[auth guard] current user : '); console.log(user);
     if (user) {
       // authorised so return true
       return true;
     }
 
     // not logged in so redirect to login page with the return url
-    this.router.navigate(['/inscription'], { queryParams: { returnUrl: state.url }});
+    this.router.navigate(['/inscription']);
     return false;
   }
 }

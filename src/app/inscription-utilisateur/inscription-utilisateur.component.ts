@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Utilisateur} from '../_model/Utilisateur';
 import {ApiUtilisateurBrokerService} from '../_broker/api-utilisateur-broker.service';
+import {ActivatedRoute, Router} from '@angular/router';
 // import {HttpClient} from '@angular/common/http';
 
 @Component({
@@ -11,7 +12,9 @@ import {ApiUtilisateurBrokerService} from '../_broker/api-utilisateur-broker.ser
 export class InscriptionUtilisateurComponent implements OnInit {
   utilisateur: Utilisateur;
 
-  constructor(private apiUtilisateurBrokerService: ApiUtilisateurBrokerService) { }
+  constructor(private apiUtilisateurBrokerService: ApiUtilisateurBrokerService,
+              private route: ActivatedRoute,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.utilisateur = new Utilisateur();
@@ -19,5 +22,10 @@ export class InscriptionUtilisateurComponent implements OnInit {
 
   inscrire(): void{
     this.apiUtilisateurBrokerService.inscrire(this.utilisateur);
+
+    // const returnUrl = this.route.snapshot.queryParams['/connexion'];
+    // this.router.navigateByUrl(returnUrl);
+
+    this.router.navigate(['/connexion']);
   }
 }

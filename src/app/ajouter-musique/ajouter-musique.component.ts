@@ -28,6 +28,7 @@ export class AjouterMusiqueComponent implements OnInit {
 
 
   ajouterMusiqueToPlaylist(): void{
+      console.log('ajouter playlist'); console.log(this.musique);
       this.apiMempaBrokerService.ajouterMorceau(this.playlist.id, this.musique);
       console.log('playlist : '); console.log(this.playlist);
       this.refreshPage();
@@ -35,14 +36,15 @@ export class AjouterMusiqueComponent implements OnInit {
   }
 
   private refreshPage(): void {
-    const currentUrl = this.router.url;
-    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-    this.router.onSameUrlNavigation = 'reload';
-    this.router.navigate([currentUrl]);
-    console.log('current url : ' + currentUrl);
+    // const currentUrl = this.router.url;
+    // this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    // this.router.onSameUrlNavigation = 'reload';
+    // this.router.navigate([currentUrl]);
+    // console.log('current url : ' + currentUrl);
+    document.location.reload();
   }
 
-  sauvagarder(): void {
+  sauvegarder(): void {
     // this.showAlert('La playlist a bien été créée !', 'success');
   }
 

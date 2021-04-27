@@ -1,10 +1,40 @@
 import { Component } from '@angular/core';
+import {ApiUtilisateurBrokerService} from './_broker/api-utilisateur-broker.service';
+import {Utilisateur} from './_model/Utilisateur';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent{
   title = 'MEMPAFront';
+  user: Utilisateur;
+
+  constructor(private apiUtilisateurBrokerService: ApiUtilisateurBrokerService) {
+    this.user = this.apiUtilisateurBrokerService.currentUser;
+    console.log('[app component constructor] user :'); console.log(this.user);
+    // sthis.apiUtilisateurBrokerService.currentUser.subscribe(x => this.user = x);
+  }
+
+  // @ViewChild(ConnexionUtilisateurComponent)
+  // set appConnexion(connexion: ConnexionUtilisateurComponent) {
+  //   this.user = connexion.utilisateur;
+  //   console.log('set view child : '); console.log(this.user);
+  // }
+
+  // ngAfterViewInit(): void {
+  //   console.log('afterViewInit');
+  //   console.log(this.user);
+  // } // affiche premier}
+
+  public setUser(user: Utilisateur): void{
+    this.user = user;
+    console.log('set user : '); console.log(this.user);
+  }
+
+  deconnexion(): void {
+    this.user = null;
+    this.apiUtilisateurBrokerService.logout();
+  }
 }
