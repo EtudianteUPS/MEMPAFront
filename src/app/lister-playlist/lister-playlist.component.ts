@@ -11,6 +11,7 @@ import {ApiMempaBrokerService} from '../api-mempa-broker.service';
 })
 export class ListerPlaylistComponent implements OnInit {
   lPlaylists: Playlist[] = [];
+  id: number;
 
   /**
    * Constructeur qui récupère le service permettant de l'utiliser plus tard
@@ -70,4 +71,30 @@ export class ListerPlaylistComponent implements OnInit {
     // p2.listeContributeurs.push(u2);
     // this.lPlaylists.push(p2);
   }
+
+  key:string = 'id';
+  reverse:boolean = false;
+  sort(key){
+    this.key = key;
+    this.reverse = !this.reverse;
+  }
+
+  deleteRow(val: number): void {
+    if (confirm('Voulez-vous vraiment supprimer cette playlist ?')) {
+      this.apiMempaBrokerService.supprimerPlaylist(val).subscribe(
+        (response) => {
+          console.log(response);
+        }
+        , (error) => {
+          console.log('Erreur ajouter')
+        }
+      );
+      this.apiMempaBrokerService.recupererListe().subscribe((response) => {
+        this.lPlaylists = response;
+      });
+
+      document.location.reload();
+    }
+}
+
 }

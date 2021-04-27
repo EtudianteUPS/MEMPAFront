@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { AppComponent } from './app.component';
 import { ListerPlaylistComponent } from './lister-playlist/lister-playlist.component';
@@ -14,6 +15,9 @@ import {FormsModule} from '@angular/forms';
 import {RouterModule, Routes} from '@angular/router';
 import {HttpClientModule} from '@angular/common/http';
 import {ApiMempaBrokerService} from './api-mempa-broker.service';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { Ng2OrderModule } from 'ng2-order-pipe';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 const appRoutes: Routes = [
   { path: 'creer', component: CreerPlaylistComponent},
@@ -36,7 +40,7 @@ const appRoutes: Routes = [
     AjouterUtilisateurComponent
   ],
   imports: [
-    BrowserModule, NgbModule, FormsModule, RouterModule.forRoot(appRoutes), HttpClientModule
+    BrowserModule, NgbModule, FormsModule, RouterModule.forRoot(appRoutes), HttpClientModule, Ng2SearchPipeModule, Ng2OrderModule, NgxPaginationModule, FontAwesomeModule
   ],
   providers: [ApiMempaBrokerService],
   bootstrap: [AppComponent]
