@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Playlist} from '../Playlist';
-import {ApiMempaBrokerService} from '../api-mempa-broker.service';
+import {Playlist} from '../_model/Playlist';
+import {ApiMempaBrokerService} from '../_broker/api-mempa-broker.service';
 
 @Component({
   selector: 'app-rechercher-playlist',
@@ -12,6 +12,8 @@ export class RechercherPlaylistComponent implements OnInit {
   id: number;
   nomPlaylist: any;
   style: any;
+  key: string = 'id';
+  reverse: boolean = false;
   /**
    * Constructeur qui récupère le service permettant de l'utiliser plus tard
    */
@@ -24,8 +26,8 @@ export class RechercherPlaylistComponent implements OnInit {
     });
   }
 
-  Search(){
-    if (this.nomPlaylist == "") {
+  Search(): void{
+    if (this.nomPlaylist === '') {
       this.ngOnInit();
     }else{
       this.lPlaylists = this.lPlaylists.filter(res =>{
@@ -35,11 +37,7 @@ export class RechercherPlaylistComponent implements OnInit {
     }
   }
 
-
-
-  key:string = 'id';
-  reverse:boolean = false;
-  sort(key){
+  sort(key): void{
     this.key = key;
     this.reverse = !this.reverse;
   }

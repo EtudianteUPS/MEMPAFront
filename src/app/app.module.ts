@@ -16,10 +16,11 @@ import {AuthGuard} from './_helpers/auth-guard';
 import {FormsModule} from '@angular/forms';
 import {RouterModule, Routes} from '@angular/router';
 import {HttpClientModule} from '@angular/common/http';
-import {ApiMempaBrokerService} from './api-mempa-broker.service';
+import {ApiMempaBrokerService} from './_broker/api-mempa-broker.service';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { Ng2OrderModule } from 'ng2-order-pipe';
 import { NgxPaginationModule } from 'ngx-pagination';
+import {ApiUtilisateurBrokerService} from './_broker/api-utilisateur-broker.service';
 
 const appRoutes: Routes = [
   { path: 'creer', component: CreerPlaylistComponent},
