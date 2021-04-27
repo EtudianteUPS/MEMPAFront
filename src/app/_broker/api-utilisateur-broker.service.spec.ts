@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ApiUtilisateurBrokerServiceService } from './api-utilisateur-broker-service.service';
+import { ApiUtilisateurBrokerService } from './api-utilisateur-broker.service';
 
 describe('ApiUtilisateurBrokerServiceService', () => {
-  let service: ApiUtilisateurBrokerServiceService;
+  let service: ApiUtilisateurBrokerService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(ApiUtilisateurBrokerServiceService);
+    service = TestBed.inject(ApiUtilisateurBrokerService);
   });
 
   it('should be created', () => {

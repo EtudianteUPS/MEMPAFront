@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {Musique} from '../Musique';
+import {Musique} from '../_model/Musique';
+import {ApiMempaBrokerService} from '../_broker/api-mempa-broker.service';
+import {ActivatedRoute, Router} from '@angular/router';
+import {HttpClient} from '@angular/common/http';
+import {Playlist} from '../_model/Playlist';
 
 @Component({
   selector: 'app-ajouter-musique',
@@ -9,19 +13,53 @@ import {Musique} from '../Musique';
 export class AjouterMusiqueComponent implements OnInit {
 
   musique: Musique;
-  listeMusique: Musique[] = [];
+  playlist: Playlist;
 
-  constructor() { }
+  constructor(private apiMempaBrokerService: ApiMempaBrokerService,
+              private httpClient: HttpClient,
+              private router: Router,
+              private routeactive: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.musique = new Musique();
+    const id = this.routeactive.snapshot.params.id; /*recupère l'id à partir du routage*/
+    this.apiMempaBrokerService.getPlaylist(id).subscribe((data) => { this.playlist = data; });
   }
 
-  public getListeMusique(): Musique[]{
-    return this.listeMusique;
+
+  ajouterMusiqueToPlaylist(): void{
+      console.log('ajouter playlist'); console.log(this.musique);
+      this.apiMempaBrokerService.ajouterMorceau(this.playlist.id, this.musique);
+      console.log('playlist : '); console.log(this.playlist);
+      this.refreshPage();
+      console.log('playlist apres: '); console.log(this.playlist);
   }
 
-  public ajouterMusiqueToListe(): void{
-    this.listeMusique.push(this.musique);
+  private refreshPage(): void {
+    // const currentUrl = this.router.url;
+    // this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    // this.router.onSameUrlNavigation = 'reload';
+    // this.router.navigate([currentUrl]);
+    // console.log('current url : ' + currentUrl);
+    document.location.reload();
   }
+
+  sauvegarder(): void {
+    // this.showAlert('La playlist a bien été créée !', 'success');
+  }
+
+  // private showAlert(message, className): void {
+  //   const alertes = document.getElementById('alertes');
+  //
+  //   alertes.innerHTML = '';
+  //
+  //   const div = document.createElement('alert');
+  //   div.className = `alert alert-${className}`;
+  //   div.appendChild(document.createTextNode(message));
+  //
+  //   alertes.appendChild(div);
+  //
+  //   // Vanish in 3 seconds
+  //   setTimeout(() => document.querySelector('.alert').remove(), 3000);
+  // }
 }

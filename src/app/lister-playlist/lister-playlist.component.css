@@ -1,5 +1,9 @@
-.highlight {
-  background-color: #D9216D;
-  color: white;
-}
+/*.highlight {*/
+/*  background-color: #D9216D;*/
+/*  color: white;*/
+/*}*/
 
+.card {
+  background: rgb(23,162,184);
+  background: linear-gradient(90deg, rgba(23,162,184,1) 0%, rgba(32,207,227,1) 70%, rgba(22,250,210,1) 100%);
+}

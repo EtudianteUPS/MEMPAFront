@@ -3,10 +3,10 @@
  */
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Playlist} from './Playlist';
+import {Playlist} from '../_model/Playlist';
 import {Observable} from 'rxjs';
-// import {playlistFetch} from './playlistFetch';
-// import {map} from 'rxjs/operators';
+import {Musique} from '../_model/Musique';
+import {Utilisateur} from '../_model/Utilisateur';
 
 @Injectable({
   providedIn: 'root'
@@ -48,8 +48,19 @@ export class ApiMempaBrokerService {
   //       (error) => { console.log('Erreur ajouter : ' + error); }
   //     ); /*gère la promesse*/
   // }
-  public ajouterPlaylist(play: Playlist): Observable<Playlist> {
-    return this.httpClient.post<Playlist>(this.url, play);
+  public ajouterPlaylist(play: Playlist, user: Utilisateur): Observable<Playlist> {
+    console.log('broker ajouterPlaylist'); console.log(play); console.log(user);
+    return this.httpClient.post<Playlist>(this.url + '/' + user.nomUtilisateur, play);
+  }
+
+
+  public ajouterMorceau(id: number, mus: Musique): void{
+    console.log('broker ajouterMorceau'); console.log('id : ' + id); console.log(mus);
+    this.httpClient.put<Playlist>(this.url + '/' + id, mus)
+    .subscribe(
+        (response) => { console.log(response); },
+        (error) => { console.log('Erreur ajouter : ' + error); }
+    ); /*gère la promesse*/
   }
 
   public supprimerPlaylist(id: number): Observable<Playlist> {

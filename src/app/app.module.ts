@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { AppComponent } from './app.component';
 import { ListerPlaylistComponent } from './lister-playlist/lister-playlist.component';
@@ -9,7 +8,10 @@ import { DetailsPlaylistComponent } from './details-playlist/details-playlist.co
 import { CreerPlaylistComponent } from './creer-playlist/creer-playlist.component';
 import { AjouterMusiqueComponent } from './ajouter-musique/ajouter-musique.component';
 import { RechercherPlaylistComponent } from './rechercher-playlist/rechercher-playlist.component';
-import { AjouterUtilisateurComponent } from './ajouter-utilisateur/ajouter-utilisateur.component';
+import { InscriptionUtilisateurComponent } from './inscription-utilisateur/inscription-utilisateur.component';
+import { ConnexionUtilisateurComponent } from './connexion-utilisateur/connexion-utilisateur.component';
+import {AuthGuard} from './_helpers/auth-guard';
+
 
 import {FormsModule} from '@angular/forms';
 import {RouterModule, Routes} from '@angular/router';
@@ -24,9 +26,11 @@ const appRoutes: Routes = [
   { path: 'ajouter/:id', component: AjouterMusiqueComponent},
   { path: 'lister', component: ListerPlaylistComponent},
   { path: 'rechercher', component: RechercherPlaylistComponent},
-  { path: 'details/:id', component: DetailsPlaylistComponent}, // on indique que l'id sera donné à notre composant routage
-  { path: '', component: ListerPlaylistComponent},
-  { path: '**', component: ListerPlaylistComponent}
+  { path: 'details/:id', component: DetailsPlaylistComponent},
+  { path: 'inscription', component: InscriptionUtilisateurComponent},
+  { path: 'connexion', component: ConnexionUtilisateurComponent},
+  { path: '', component: ConnexionUtilisateurComponent},
+  { path: '**', component: ListerPlaylistComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({
@@ -37,12 +41,13 @@ const appRoutes: Routes = [
     CreerPlaylistComponent,
     AjouterMusiqueComponent,
     RechercherPlaylistComponent,
-    AjouterUtilisateurComponent
+    ConnexionUtilisateurComponent,
+    InscriptionUtilisateurComponent
   ],
   imports: [
-    BrowserModule, NgbModule, FormsModule, RouterModule.forRoot(appRoutes), HttpClientModule, Ng2SearchPipeModule, Ng2OrderModule, NgxPaginationModule, FontAwesomeModule
+    BrowserModule, NgbModule, FormsModule, RouterModule.forRoot(appRoutes), HttpClientModule, Ng2SearchPipeModule, Ng2OrderModule, NgxPaginationModule
   ],
-  providers: [ApiMempaBrokerService],
+  providers: [ApiMempaBrokerService, ApiUtilisateurBrokerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

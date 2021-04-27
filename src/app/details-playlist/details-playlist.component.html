@@ -1,18 +1,19 @@
-<h2 class="mt-3 mb-3">Détails de la playlist</h2>
+<h1 class="text-center mb-5">Détails de la playlist : {{playlist.nomPlaylist}}</h1>
+
 <div class="row">
-  <div class="col-4">
+  <div class="col-3">
     <div class="card" >
       <img src="assets/pochetteDefault.jpg" class="card-img-top" alt="...">
       <div class="card-body">
-        <h4 class="card-title">{{playlist.nomPlaylist}}</h4>
-        <h6 class="font-weight-bold">{{playlist.nomCreateur}}</h6>
-        {{playlist.style}} <br/>
-        {{playlist.nbClics}} <i class="bi bi-eye-fill"></i>
+        <h4 class="card-title"><i class="bi bi-music-note-list mr-4" style="font-size: 1rem ;"></i> {{playlist.nomPlaylist}}</h4>
+        <h6 class="mb-3"><i class="bi bi-person mr-4" style="font-size: 1rem ;"></i> {{playlist.nomCreateur}}</h6>
+        <h6><i class="bi bi-eye-fill mr-4" style="font-size: 1rem ;"></i> {{playlist.nbClics}} </h6>
+        <h6>{{playlist.style}}</h6>
       </div>
     </div>
   </div>
 
-  <div class="col-8">
+  <div class="col-8 offset-1">
     <h5>Liste musique</h5>
     <table class="table table-light table-hover">
       <thead class="thead-light">
