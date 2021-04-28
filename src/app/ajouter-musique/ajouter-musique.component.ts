@@ -11,7 +11,6 @@ import {Playlist} from '../_model/Playlist';
   styleUrls: ['./ajouter-musique.component.css']
 })
 export class AjouterMusiqueComponent implements OnInit {
-
   musique: Musique;
   playlist: Playlist;
 
@@ -28,9 +27,7 @@ export class AjouterMusiqueComponent implements OnInit {
 
 
   ajouterMusiqueToPlaylist(): void{
-      console.log('ajouter playlist'); console.log(this.musique);
       this.apiMempaBrokerService.ajouterMorceau(this.playlist.id, this.musique);
-      console.log('playlist : '); console.log(this.playlist);
       this.refreshPage();
       console.log('playlist apres: '); console.log(this.playlist);
   }
@@ -47,19 +44,4 @@ export class AjouterMusiqueComponent implements OnInit {
   sauvegarder(): void {
     // this.showAlert('La playlist a bien été créée !', 'success');
   }
-
-  // private showAlert(message, className): void {
-  //   const alertes = document.getElementById('alertes');
-  //
-  //   alertes.innerHTML = '';
-  //
-  //   const div = document.createElement('alert');
-  //   div.className = `alert alert-${className}`;
-  //   div.appendChild(document.createTextNode(message));
-  //
-  //   alertes.appendChild(div);
-  //
-  //   // Vanish in 3 seconds
-  //   setTimeout(() => document.querySelector('.alert').remove(), 3000);
-  // }
 }

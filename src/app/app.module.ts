@@ -10,7 +10,7 @@ import { AjouterMusiqueComponent } from './ajouter-musique/ajouter-musique.compo
 import { RechercherPlaylistComponent } from './rechercher-playlist/rechercher-playlist.component';
 import { InscriptionUtilisateurComponent } from './inscription-utilisateur/inscription-utilisateur.component';
 import { ConnexionUtilisateurComponent } from './connexion-utilisateur/connexion-utilisateur.component';
-import {AuthGuard} from './_helpers/auth-guard';
+// import {AuthGuard} from './_helpers/auth-guard';
 
 
 import {FormsModule} from '@angular/forms';
@@ -30,8 +30,9 @@ const appRoutes: Routes = [
   { path: 'details/:id', component: DetailsPlaylistComponent},
   { path: 'inscription', component: InscriptionUtilisateurComponent},
   { path: 'connexion', component: ConnexionUtilisateurComponent},
-  { path: '', component: ConnexionUtilisateurComponent},
-  { path: '**', component: ListerPlaylistComponent, canActivate: [AuthGuard]}
+  // { path: '', component: ConnexionUtilisateurComponent},
+  { path: '', component: ListerPlaylistComponent},
+  { path: '**', component: ListerPlaylistComponent}
 ];
 
 @NgModule({
@@ -46,7 +47,8 @@ const appRoutes: Routes = [
     InscriptionUtilisateurComponent
   ],
   imports: [
-    BrowserModule, NgbModule, FormsModule, RouterModule.forRoot(appRoutes), HttpClientModule, Ng2SearchPipeModule, Ng2OrderModule, NgxPaginationModule
+    BrowserModule, NgbModule, FormsModule, RouterModule.forRoot(appRoutes), HttpClientModule, Ng2SearchPipeModule,
+    Ng2OrderModule, NgxPaginationModule
   ],
   providers: [ApiMempaBrokerService, ApiUtilisateurBrokerService],
   bootstrap: [AppComponent]

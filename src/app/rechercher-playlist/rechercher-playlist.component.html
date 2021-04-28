@@ -1,35 +1,32 @@
 <h2 class="mt-3 mb-3">Rechercher une playlist</h2>
 <div class="table-responsive">
+  <div class="form-group input-group col">
+    <span class="input-group-text" id="user-addon"><i class="bi bi-search"></i></span>
+    <input class="form-control" type="text" name="nomPlaylist" aria-describedby="user-addon" [(ngModel)]="nomPlaylist" name = "style" [(ngModel)]="style" (ngModelChange)="Search()" placeholder="Rechercher une playlist ou un style de musique">
+  </div>
 
-  <nav class="navbar">
-    <div class="form-group input-group col">
-      <span class="input-group-text" id="user-addon"><i class="bi bi-search"></i></span>
-    <input class="form-control" type="text" name="nomPlaylist" aria-describedby="user-addon" [(ngModel)]="nomPlaylist" name = "style" [(ngModel)] = "style" (ngModelChange)="Search()"
-    placeholder="Rechercher une playlist ou un style de musique">
-    </div>
-  </nav>
   <table class="table table-light table-hover">
     <thead class="thead-light">
-    <tr>
-      <th>#</th>
-      <th (click)="sort('nomPlaylist')">Nom playlist&nbsp;<i class="bi bi-chevron-expand"></i></th>
-      <th (click)="sort('style')">Style&nbsp;<i class="bi bi-chevron-expand"></i></th>
-      <th (click)="sort('nbClics')">Nombre de clics&nbsp;<i class="bi bi-chevron-expand"></i></th>
-      <th>Action</th>
-    </tr>
+      <tr>
+        <th>#</th>
+        <th (click)="sort('nomPlaylist')">Nom playlist&nbsp;<i class="bi bi-chevron-expand"></i></th>
+        <th (click)="sort('style')">Style&nbsp;<i class="bi bi-chevron-expand"></i></th>
+        <th (click)="sort('nbClics')">Nombre de clics&nbsp;<i class="bi bi-chevron-expand"></i></th>
+        <th>Action</th>
+      </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let playlist of this.lPlaylists | orderBy : key : reverse; index as i">
-      <td>{{i+1}}</td>
-      <td>{{playlist.nomPlaylist}}</td>
-      <td>{{playlist.style}}</td>
-      <td>{{playlist.nbClics}}</td>
-      <td>
-        <div class="btn-group" role="group" aria-label="Basic example">
-          <button type="button" class="btn btn-info btn-sm" routerLink="/details/{{playlist.id}}"><i class="bi bi-search"></i></button>
-        </div>
-      </td>
-    </tr>
+      <tr *ngFor="let playlist of this.lPlaylists | orderBy : key : reverse; index as i">
+        <td>{{i+1}}</td>
+        <td>{{playlist.nomPlaylist}}</td>
+        <td>{{playlist.style}}</td>
+        <td>{{playlist.nbClics}}</td>
+        <td>
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <button type="button" class="btn btn-info btn-sm" routerLink="/details/{{playlist.id}}"><i class="bi bi-search"></i></button>
+          </div>
+        </td>
+      </tr>
     </tbody>
   </table>
 </div>

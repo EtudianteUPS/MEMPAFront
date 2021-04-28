@@ -23,9 +23,6 @@ export class InscriptionUtilisateurComponent implements OnInit {
   inscrire(): void{
     this.apiUtilisateurBrokerService.inscrire(this.utilisateur);
 
-    // const returnUrl = this.route.snapshot.queryParams['/connexion'];
-    // this.router.navigateByUrl(returnUrl);
-
     this.router.navigate(['/connexion']);
   }
 }

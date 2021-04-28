@@ -14,6 +14,7 @@ export class RechercherPlaylistComponent implements OnInit {
   style: any;
   key: string = 'id';
   reverse: boolean = false;
+
   /**
    * Constructeur qui récupère le service permettant de l'utiliser plus tard
    */
@@ -30,7 +31,7 @@ export class RechercherPlaylistComponent implements OnInit {
     if (this.nomPlaylist === '') {
       this.ngOnInit();
     }else{
-      this.lPlaylists = this.lPlaylists.filter(res =>{
+      this.lPlaylists = this.lPlaylists.filter(res => {
         return res.nomPlaylist.toLocaleLowerCase().match(this.nomPlaylist.toLocaleLowerCase()) ||
         res.style.toLocaleLowerCase().match(this.style.toLocaleLowerCase());
       });

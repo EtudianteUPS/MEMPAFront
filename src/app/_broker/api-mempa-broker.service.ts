@@ -17,9 +17,8 @@ export class ApiMempaBrokerService {
     headers: this.headers
   };
   private url = 'http://localhost:3000/api/playlists'; /*Url du serveur*/
-  constructor(private httpClient: HttpClient) { }
 
-  /* On ne maintient pas de liste de playlist au sein du service */
+  constructor(private httpClient: HttpClient) { }
 
   /**
    * Rècupère la liste de playlist à l'aide d'une requête HTTP GET
@@ -41,25 +40,22 @@ export class ApiMempaBrokerService {
    * Ajoute une playlist
    *  play
    */
-  // public ajouterPlaylist(play: Playlist): void {
-  //   this.httpClient.post<Playlist>(this.url, play)
-  //     .subscribe(
-  //       (response) => { console.log(response); },
-  //       (error) => { console.log('Erreur ajouter : ' + error); }
-  //     ); /*gère la promesse*/
-  // }
   public ajouterPlaylist(play: Playlist, user: Utilisateur): Observable<Playlist> {
-    console.log('broker ajouterPlaylist'); console.log(play); console.log(user);
+    console.log('broker ajouterPlaylist'); console.log(play); console.log(user.nomUtilisateur);
     return this.httpClient.post<Playlist>(this.url + '/' + user.nomUtilisateur, play);
   }
 
-
+  /**
+   * Ajoute un morceau dans une playlist donnée
+   * @ param id
+   * @ param mus
+   */
   public ajouterMorceau(id: number, mus: Musique): void{
     console.log('broker ajouterMorceau'); console.log('id : ' + id); console.log(mus);
     this.httpClient.put<Playlist>(this.url + '/' + id, mus)
     .subscribe(
         (response) => { console.log(response); },
-        (error) => { console.log('Erreur ajouter : ' + error); }
+        (error) => { console.log('Erreur ajouterMorceau : ' + error); }
     ); /*gère la promesse*/
   }
 

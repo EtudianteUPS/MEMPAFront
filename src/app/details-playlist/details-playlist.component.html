@@ -17,18 +17,18 @@
     <h5>Liste musique</h5>
     <table class="table table-light table-hover">
       <thead class="thead-light">
-      <tr>
-        <th>#</th>
-        <th>Titre</th>
-        <th>Nom Artiste</th>
-      </tr>
+        <tr>
+          <th>#</th>
+          <th>Titre</th>
+          <th>Nom Artiste</th>
+        </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let musique of this.playlist.listeMorceaux; index as i">
-        <td>{{i+1}}</td>
-        <td>{{musique.titre}}</td>
-        <td>{{musique.nomArtiste}}</td>
-      </tr>
+        <tr *ngFor="let musique of this.playlist.listeMorceaux; index as i">
+          <td>{{i+1}}</td>
+          <td>{{musique.titre}}</td>
+          <td>{{musique.nomArtiste}}</td>
+        </tr>
       </tbody>
     </table>
 
