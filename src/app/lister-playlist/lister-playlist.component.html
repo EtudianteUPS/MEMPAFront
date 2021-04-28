@@ -1,6 +1,6 @@
 <div class="card mb-5 d-none d-md-block">
   <div class="card-body text-center text-light">
-    <p class="card-text">Dernière sorties</p>
+    <p class="card-text">Dernières sorties</p>
     <h1 class="card-title">Découvrez les dernières playlists du moment !</h1>
   </div>
 </div>
@@ -12,6 +12,7 @@
       <tr>
         <th>#</th>
         <th (click)="sort('nomPlaylist')">Nom playlist&nbsp;<i class="bi bi-chevron-expand"></i></th>
+        <th (click)="sort('nomCreateur')">Nom créateur<i class="bi bi-chevron-expand"></i></th>
         <th (click)="sort('style')">Style&nbsp;<i class="bi bi-chevron-expand"></i></th>
         <th (click)="sort('nbClics')">Nombre de clics&nbsp;<i class="bi bi-chevron-expand"></i></th>
         <th>Action</th>
@@ -21,6 +22,7 @@
       <tr *ngFor="let playlist of this.lPlaylists | orderBy : key : reverse; index as i">
         <td>{{i+1}}</td>
         <td>{{playlist.nomPlaylist}}</td>
+        <td>{{playlist.nomCreateur}}</td>
         <td>{{playlist.style}}</td>
         <td>{{playlist.nbClics}}</td>
         <td>

@@ -12,8 +12,9 @@ export class RechercherPlaylistComponent implements OnInit {
   id: number;
   nomPlaylist: any;
   style: any;
-  key: string = 'id';
-  reverse: boolean = false;
+  nomCreateur: any;
+  key = 'id';
+  reverse = false;
 
   /**
    * Constructeur qui récupère le service permettant de l'utiliser plus tard
@@ -33,7 +34,8 @@ export class RechercherPlaylistComponent implements OnInit {
     }else{
       this.lPlaylists = this.lPlaylists.filter(res => {
         return res.nomPlaylist.toLocaleLowerCase().match(this.nomPlaylist.toLocaleLowerCase()) ||
-        res.style.toLocaleLowerCase().match(this.style.toLocaleLowerCase());
+              res.style.toLocaleLowerCase().match(this.style.toLocaleLowerCase()) ||
+              res.nomCreateur.toLocaleLowerCase().match(this.nomCreateur.toLowerCase());
       });
     }
   }

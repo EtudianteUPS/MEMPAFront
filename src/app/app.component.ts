@@ -28,4 +28,5 @@ export class AppComponent{
   //   this.user = null;
   //   this.apiUtilisateurBrokerService.logout();
   // }
+
 }

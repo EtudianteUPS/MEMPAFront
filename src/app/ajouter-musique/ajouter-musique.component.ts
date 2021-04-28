@@ -42,6 +42,7 @@ export class AjouterMusiqueComponent implements OnInit {
   }
 
   sauvegarder(): void {
+    this.router.navigate(['/details/' + this.playlist.id]);
     // this.showAlert('La playlist a bien été créée !', 'success');
   }
 }

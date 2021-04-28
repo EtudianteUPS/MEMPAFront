@@ -29,7 +29,7 @@ export class ApiMempaBrokerService {
   }
 
   /**
-   * Récupère une playlist
+   * Consulte une une playlist et incrémente le nombre de vues
    *  id
    */
   public getPlaylist(id: number): Observable<Playlist>{
@@ -41,7 +41,6 @@ export class ApiMempaBrokerService {
    *  play
    */
   public ajouterPlaylist(play: Playlist, user: Utilisateur): Observable<Playlist> {
-    console.log('broker ajouterPlaylist'); console.log(play); console.log(user.nomUtilisateur);
     return this.httpClient.post<Playlist>(this.url + '/' + user.nomUtilisateur, play);
   }
 
@@ -51,7 +50,7 @@ export class ApiMempaBrokerService {
    * @ param mus
    */
   public ajouterMorceau(id: number, mus: Musique): void{
-    console.log('broker ajouterMorceau'); console.log('id : ' + id); console.log(mus);
+    // console.log('broker ajouterMorceau'); console.log('id : ' + id); console.log(mus);
     this.httpClient.put<Playlist>(this.url + '/' + id, mus)
     .subscribe(
         (response) => { console.log(response); },
